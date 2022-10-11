@@ -44,7 +44,7 @@ module.exports={
             db.get().collection(collection.USER_COLLECTION).insertOne(userData).then((data)=>{
                 
                 console.log(userData);                
-                resolve(userData,usercount)
+                resolve(userData)
             })
          }               
          let rcd=await db.get().collection(collection.USER_COLLECTION).findOne({referralCode:userData.referrals })
