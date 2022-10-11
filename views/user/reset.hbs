@@ -1,0 +1,101 @@
+<div class="container mt-5" style=" width: 100%;  ">
+   
+	<div class="row" style="background-image: url(https://static.lingoapp.com/assets/images/email/il-password-reset@2x.png); background-position: -200px;">
+		<div class="col-sm-4" style=" margin-left:600px ; margin-top:70px; padding-top: 100px;">
+		 <form action="/reset/{{user._id}}" method="post" id="frm">
+		       <label >New Password</label>
+            <div class="form-group pass_show"> 
+         <input type="password" id="password"  name="password" placeholder="New Password" class="form-control" />
+            </div> <br>
+		       <label>Confirm Password</label>
+            <div class="form-group pass_show"> 
+          <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password" class="form-control" />
+            </div> 
+            <br>
+            
+              <div class="col-md-4 mt-3">
+              <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+
+		</form>
+       
+        </div>
+	</div>
+</div>
+
+
+
+
+<style>
+    .pass_show{position: relative} 
+
+.pass_show .ptxt { 
+
+position: absolute; 
+
+top: 50%; 
+
+right: 10px; 
+
+z-index: 1; 
+
+color: #f36c01; 
+
+margin-top: -10px; 
+
+cursor: pointer; 
+
+transition: .3s ease all; 
+
+} 
+
+.pass_show .ptxt:hover{color: #333333;} 
+</style>
+
+
+
+
+<script>
+      
+$(document).ready(function(){
+$('.pass_show').append('<span class="ptxt">Show</span>');  
+});
+  
+
+$(document).on('click','.pass_show .ptxt', function(){ 
+
+$(this).text($(this).text() == "Show" ? "Hide" : "Show"); 
+
+$(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; }); 
+
+});  
+
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+jQuery('#frm').validate({
+rules:{
+    password:{     
+      minlength:5      
+      },
+    cpassword:{
+      minlength:5,
+      equalTo:"#password"
+    }
+},messages:{
+
+    password:"please enter your password",
+    cpassword:"please repeat your password",
+
+},  
+submitHandler:function(form){
+    form.submit();
+}
+
+});
+</script>

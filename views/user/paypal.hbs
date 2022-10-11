@@ -1,0 +1,62 @@
+
+<div id="paypal-button-container"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=AZ8tbVN8E-a8ADGTbnUbK1vcminW6AxCi1N8YDLb-GMSlFYFk4YJObss85ntOr-dge8QpSNmOAYB_Spj&currency=USD"></script>
+
+
+<script>
+
+paypal
+  .Buttons({
+    
+    // Sets up the transaction when a payment button is clicked
+    createOrder: function (data, actions) {
+      return fetch("/api/orders", {
+        method: "post",
+        
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response,'order==================');
+          return response.id;
+        });
+    },
+
+    // Finalize the transaction after payer approval
+    onApprove: function (data, actions) {
+      console.log("HIIIIIIIIIIII")
+      return actions.order.capture()
+   
+      /*return fetch(`/api/orders/${data.orderId}/capture`, {
+        method: "post",
+      })
+        .then((response) => response.json())
+        .then(function (orderData) {
+          // Successful capture! For dev/demo purposes:
+          console.log(
+            "Capture result",
+            orderData,
+            JSON.stringify(orderData, null, 2)
+          );
+          var transaction = orderData.purchase_units[0].payments.captures[0];*/
+          // alert(
+          //   "Transaction " +
+          //     transaction.status +
+          //     ": " +
+          //     transaction.id +
+          //     "\n\nSee console for all available details"
+          // );  
+         //$('#payment-submit-btn').trigger('click')
+          
+
+          // When ready to go live, remove the alert and show a success message within this page. For example:
+          //var element = document.getElementById('paypal-button-container');
+           //element.innerHTML = '';
+           //element.innerHTML = '<h3>Thank you for your payment!</h3>';
+          // Or go to another URL:  actions.redirect('thank_you.html');
+       // });
+    },
+  })
+  .render("#paypal-button-container");
+
+  
+</script>

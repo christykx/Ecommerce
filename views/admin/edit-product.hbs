@@ -1,0 +1,203 @@
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
+</head>
+<body>
+<div class="container">
+ <div class="col-md-12  mt-4" style="text-align: end;">
+<a href ="/admin/view-products" class="btn btn-success ">Go Back</a>
+</div>
+</div>
+
+
+<!-- Include the above in your HEAD tag -->
+<div class="container">
+<section>  
+<form class="form-horizontal" action="/admin/edit-product/{{product._id}}" enctype="multipart/form-data" method="post">
+<fieldset>
+
+<!-- Form Name -->
+<legend>EDIT PRODUCT</legend>
+<hr>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="product_name" value="{{product.product_name}}" placeholder="Product Name" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+<br>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
+  <div class="col-md-4">
+    <select id="category" name="category" placeholder="select your category"  class="form-control" >
+
+<option selected>{{product.category}}</option>
+  {{#each categories}}
+  <option>{{this.category}}</option>
+     {{/each}}
+    </select>
+  </div>
+</div>
+
+<br>
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_description">PRODUCT DESCRIPTION</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="product_description" name="product_description" >{{product.product_description}}</textarea>
+  </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="available_quantity">AVAILABLE QUANTITY</label>  
+  <div class="col-md-4">
+  <input id="available_quantity" name="available_quantity" value="{{product.available_quantity}}" placeholder="Available Quantity" class="form-control input-md" required="" type="number">
+    
+  </div>
+</div>
+<br>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="offer_price">OFFER PRICE</label>  
+  <div class="col-md-4">
+  <input id="offer_price" name="offer_price" value="{{product.offer_price}}" placeholder="Offer Price" class="form-control input-md" required="" type="number">
+    
+  </div>
+</div>
+<br>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="price">PRICE</label>  
+  <div class="col-md-4">
+  <input id="price" name="price" placeholder="Price" value="{{product.price}}" class="form-control input-md" required="" type="number">   
+  </div>
+</div>
+<br>
+
+<!-- Text input-->
+{{!-- <div class="form-group">
+  <label class="col-md-4 control-label" for="percentage_discount">PERCENTAGE DISCOUNT</label>  
+  <div class="col-md-4">
+  <input id="percentage_discount" name="percentage_discount" value="{{product.percentage_discount}}" placeholder="Percentage Discount" class="form-control input-md" required="" type="number">
+    
+  </div>
+</div>
+<br> --}}
+
+ {{!-- <!-- File Button --> 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="image">Upload Image</label><br><br>
+
+  <div class="col-md-4">
+      <img src="/product-images/{{product._id}}.jpg" alt="" style="width: 100px; height:auto;" id="imgView"><br><br>
+    <input id="image" name="image" class="form-control" type="file" onchange="viewImage(event)">
+  </div>
+</div>
+<br> --}}
+
+
+
+                 <img src="/product-images/{{product._id}}.jpg" id="imgView1" alt="" style="height:100px">
+                  <input type="file" id="id_image1" name="image" accept="image/*" onchange="viewImage1(event)"
+                    style="width:100%;"><br>
+                  <div class="vald-info" id="info"></div>
+                 <h5 class="error_form text-danger" id="image1_error_message"></h5>
+                  <div style="display:flex">
+                    <div id="image-box1" class="image-container"></div>
+                  <button type="button" class="btn btn-outline-info  ms-3" id="crop-btn1" style=" margin-top: 10px; display: none;
+                      width:  50% ; margin: 20rem 0rem 0rem 0rem;">Crop</button>
+                  </div>
+
+
+<!-- Button -->
+<div class="form-group">
+
+  <div class="col-md-4">
+    <button  class="btn btn-primary">Submit</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>
+</section>
+</div>
+ </body>
+</html>
+
+
+<script>
+   /* function viewImage(event)
+    {
+    document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+    }*/
+
+  /* --------------------------------- image 1 -------------------------------- */
+  const imagebox1 = document.getElementById('image-box1')
+  const crop_btn1 = document.getElementById('crop-btn1')
+  const input1 = document.getElementById('id_image1')
+  function viewImage1(event) {
+    var fileInput1 = document.getElementById('id_image1');
+    var filePath1 = fileInput1.value;
+    var allowedExtensions = /(\.jpg|)$/i;
+    if (!allowedExtensions.exec(filePath1)) {
+      fileInput1.value = '';
+      swal("There is a problem!", "Please choose image file.");
+      return false;
+    } else {
+      document.getElementById('imgView1').src = URL.createObjectURL(event.target.files[0])
+    }
+  }
+  // When user uploads the image this event will get triggered
+  input1.addEventListener('change', () => {
+    // Getting image file object from the input variable
+    const img_data1 = input1.files[0]
+    // createObjectURL() static method creates a DOMString containing a URL representing the object given in the parameter.
+    // The new object URL represents the specified File object or Blob object.
+    const url1 = URL.createObjectURL(img_data1)
+    // Creating a image tag inside imagebox which will hold the cropping view image(uploaded file) to it using the url created before.
+    imagebox1.innerHTML = `<img src="${url1}" id="image1" style="width:100%;">`
+    // Storing that cropping view image in a variable
+    const image = document.getElementById('image')
+    // Displaying the image box
+    document.getElementById('image-box1').style.display = 'block'
+    // Displaying the Crop buttton
+    document.getElementById('crop-btn1').style.display = 'block'
+    // Hiding the Post button
+    const cropper1 = new Cropper(image1, {
+      autoCropArea: 1,
+      viewMode: 1,
+      scalable: false,
+      zoomable: false,
+      movable: false,
+      minCropBoxWidth: 50,
+      minCropBoxHeight: 50,
+    })
+    // When crop button is clicked this event will get triggered
+    crop_btn1.addEventListener('click', () => {
+      // This method coverts the selected cropped image on the cropper canvas into a blob object
+      cropper1.getCroppedCanvas().toBlob((blob) => {
+        // Gets the original image data
+        let fileInputElement1 = document.getElementById('id_image1');
+        // Make a new cropped image file using that blob object, image_data.name will make the new file name same as original image
+        let file1 = new File([blob], img_data1.name, { type: "image/*", lastModified: new Date().getTime() });
+        // Create a new container
+        let container1 = new DataTransfer();
+        // Add the cropped image file to the container
+        container1.items.add(file1);
+        // Replace the original image file with the new cropped image file
+        fileInputElement1.files = container1.files;
+        document.getElementById('imgView1').src = URL.createObjectURL(fileInputElement1.files[0])
+        // Hide the cropper box
+        document.getElementById('image-box1').style.display = 'none'
+        // Hide the crop button
+        document.getElementById('crop-btn1').style.display = 'none'
+      })
+    })
+  })
+
+  </script>

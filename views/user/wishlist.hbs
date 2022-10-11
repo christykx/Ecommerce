@@ -1,0 +1,45 @@
+<section>
+    <div class="container">
+         <div class="row">
+      {{#each products}}
+    <div class="col-lg-4 mb-4">
+    <div class="card">
+ <a href="/singleproduct/{{this.product._id}}"><img src="/product-images/{{this.product._id}}.jpg"class="card-img-top"></a>
+
+      <div class="card-body">
+         <span>{{this.product.product_name}}</span>  
+                    <p >{{this.product.product_description}}</p>
+
+                               <p>{{this.product.offer_price}} <del> {{this.product.price}}</del></p>
+                               <p style="color: green;">{{this.product.discount}}% off</p>
+        {{!-- <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a> --}}
+        <button class="btn btn-outline-warning btn-sm" onclick="addToCart('{{this.product._id}}')">Add To Cart</button>
+       <button class="btn btn-danger" onclick="removeWishlistItem('{{this._id}}','{{this.product._id}}')">Remove</button>
+      </div>
+     </div>
+    </div>
+    {{/each}}
+  </div>
+    </div>
+</section>
+
+
+<script>
+
+     function removeWishlistItem(wishlistId,proId){
+      
+       $.ajax({
+        url:'/remove-wishlist-item',
+        data:{
+             wishlist:wishlistId,
+            product:proId
+        },
+        method:'post',
+        success:(response)=>{  
+        location.reload()
+        }
+
+     })
+
+     }
+</script>

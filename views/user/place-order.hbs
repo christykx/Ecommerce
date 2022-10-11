@@ -1,0 +1,279 @@
+<head>
+{{!-- <script src="https://www.paypal.com/sdk/js?client-id=AZ8tbVN8E-a8ADGTbnUbK1vcminW6AxCi1N8YDLb-GMSlFYFk4YJObss85ntOr-dge8QpSNmOAYB_Spj&currency=USD"></script> --}}
+ {{!-- <script src="/public/javacripts/paypal.js"></script>  --}}
+</head>
+
+<div class="container mt-5">
+  <form class="row g-3" action="" id="frm">
+    {{!-- <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div> --}}
+    <div class="col-6">
+      <label for="inputAddress" class="form-label"><b>Address</b></label>
+      {{!-- <input type="text" name="address" class="form-control" placeholder="Eg: 1234 Main St">   --}}
+<select name="address" class="form-select" aria-label="Default select example">
+  {{!-- <option selected>Eg: 1234 Main St</option> --}}
+    {{#each user.address}}
+  <option value="{{this}}">{{this}}</option>
+    {{/each}}
+{{!-- 
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option> --}}
+{{!-- </select> --}}
+
+    </div>
+
+
+ <div class="col-md-4">
+      <label  class="form-label"></label>
+      <input  style="border: none;" >
+    </div>
+
+
+    {{!-- <div class="col-12">
+      <label for="inputAddress2" class="form-label">Address 2</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div> --}}
+    <div class="col-md-4">
+      <label for="inputPhone" class="form-label"><b>phone Number</b></label>
+      <input type="tel" name="phone" class="form-control" id="inputPhone">
+    </div>
+
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label"><b>City</b></label>
+      <input type="text" name="city" class="form-control" id="inputCity">
+    </div>
+    {{!-- <div class="col-md-4">
+      <label for="inputState" class="form-label">State</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div> --}}
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label"><b>Pincode</b></label>
+      <input type="number" name="pincode" class="form-control" id="inputZip">
+    </div>
+
+      <div class="col-md-6">
+      <label for="inputCoupon" class="form-label"><b>Coupon Code</b></label>
+      <input type="text"  id="couponCode"  name="coupon" class="form-control" placeholder=" ">
+      <a onclick="applyCoupon()" style="float: right;" class="btn btn-primary">Apply</a>
+  
+    </div>
+
+
+    <input type="text" name="userId" id="" value="{{user._id}}" hidden>
+    {{!-- <input type="text" name="offerId" id="" value="{{offer._id}}" hidden> --}}
+    <input type="text" name="useremail" id="" value="{{user.email}}" hidden>
+
+    <div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title" >Total Amount: ₹<span id="total">{{total}}</span> </h5>
+          
+          <hr>
+          <h5 class="card-title">Payment Method</h5>
+          <hr>
+
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio1" name="payment-method" value="cod" checked>COD
+            <label class="form-check-label" for="radio1"></label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio2" name="payment-method" value="razorpay">RazorPay
+            <label class="form-check-label" for="radio2"></label>
+          </div>
+           <div class="form-check">
+          <input type="radio" class="form-check-input" id="radio3" name="payment-method"  value="paypal">PayPal
+            <label class="form-check-label" for="radio3"></label>
+             <div id="paypal-button-container"></div>
+          </div>
+           <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio1" onclick="walletCheck('{{user._id}}')" name="payment-method" value="wallet">Wallet
+            <label class="form-check-label" for="radio1"></label>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Check Out</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  {{!-- <div id="paypal-button-container"></div> --}}
+ 
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+  integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{{!--
+<script>
+  jQuery('#frm').validate({
+    rules: {
+      address: {
+        required: true,
+        normalizer: function (value) {
+          return $.trim(value);
+        }
+      },
+      city: {
+        required: true,
+        normalizer: function (value) {
+          return $.trim(value);
+        }
+      },
+      pincode: {
+        required: true,
+        maxlength: 6
+      },
+      phone: "required",
+
+    }, messages: {
+      address: "please enter your address",
+      phone: "please enter your phone number",
+      city: "please enter your city",
+      pincode: "please enter your pincode",
+
+    },
+    submitHandler: function (form) {
+      form.submit();
+    });
+</script> --}}
+
+<script>
+  $("#frm").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+      url: '/place-order',
+      method: 'post',
+      data: $('#frm').serialize(),
+      success: (response) => {
+        console.log(response)
+        if (response.codSuccess) {
+          location.href = '/order-success'
+        }else if(response.order){
+            console.log('successssss')
+           location.href = '/paypal'
+           }else if(response.walletSuccess){
+           location.href = '/order-success'
+           }else{
+          razorpayPayment(response)
+        }
+      }
+
+    })
+
+  })
+  function razorpayPayment(order) {
+  
+    var options = {
+      "key": "rzp_test_yzgaSB3MbPLXSc", // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Tale Of Time",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response) {
+     //   alert(response.razorpay_payment_id);
+       // alert(response.razorpay_order_id);
+        //alert(response.razorpay_signature);
+
+        verifyPayment(response,order)
+      },
+      "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+   var rzp1 = new Razorpay(options);
+   rzp1.open();
+
+  }
+  function verifyPayment(payment,order){
+    $.ajax({
+      url:'/verify-payment',
+      data:{
+        payment,
+        order
+      },
+      method:'post',
+      success:(response)=>{
+        if(response.status){
+          location.href='/order-success'
+        }else if(response.paypal){
+            console.log('successssss')
+           location.href = '/order-success'
+        }else{
+          alert("payment failed")
+        }
+      }
+    })
+  }
+
+    function walletCheck(userId){
+  let couponName=document.getElementById("couponCode")
+  console.log(couponName.value)
+  let coupon=couponName.value
+    $.ajax({
+      url:'/check-wallet',
+      data:{
+       userId,
+       coupon
+      },
+      method:'post',
+      success:(response)=>{
+        if(response.status){
+          location.href='/order-success'
+        }else{
+          alert("Insufficient Balance in your wallet")
+          location.reload()
+
+        }
+      }
+    })
+  }
+ 
+function applyCoupon(){
+
+  let couponName=document.getElementById("couponCode")
+  console.log(couponName.value)
+  let coupon=couponName.value
+    $.ajax({
+      url:'/apply-coupon',
+      data:{
+       coupon
+      },
+      method:'post',
+      success:(response)=>{
+        
+          document.getElementById('total').innerHTML=response
+        
+      }
+    })
+  }
+  
+  let addressSelected=document.getElementById("add")
+  console.log("++++++++++++++++++++++++")
+  console.log(addressSelected.value)
+ 
+  </script>

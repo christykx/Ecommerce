@@ -1,0 +1,676 @@
+<html>
+
+<head>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Include the above in your HEAD tag -->
+  <div class="container">
+    <div class="row" >
+      <section class="col-md-6">
+        <form class="form-horizontal" action="/edit-profile/{{user._id}}" enctype="multipart/form-data" method="post">
+          <fieldset>
+            <br>
+            <!-- Form Name -->
+            <h5 class="p-3" style="margin-left:12%;">PROFILE</h5>
+
+            <div>
+              <div class="form-group">
+                  <div class="card mb-4 border border-info border border-3" style="width:80%">
+                    <div class="card-body text-center">
+
+                      <img src="/profile-images/{{user._id}}.jpg" alt=""
+                        style="width: 40%; border-radius: 50%; height:auto;" id="imgVw"><br><br>
+                      {{!-- <label class="col-md-4 control-label" for="image">Upload Profile Picture</label> --}}
+                      <span>Upload Profile Picture</span>
+                      <input id="image" name="image"  class="form-control" type="file"
+                        onchange="viewImg(event)">
+
+                    </div>
+
+
+                    <!-- File Button -->
+                    <br>
+
+                    <div class="d-flex flex-row align-items-center  p-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 38px;" width="30" height="30"
+                        fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                      </svg>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example1c"><b>Your Name</b></label>
+                        <input type="text" name="username" value="{{user.username}}" placeholder="Enter your name"
+                          id="form3Example1c" class="form-control"
+                          style="color:grey; width: 60%;margin-left:10px; border:none" />
+
+                      </div>
+                    </div>
+
+
+                    <!-- Select Basic -->
+                    <div class="d-flex flex-row align-items-center  p-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 38px;" width="25" height="25"
+                        fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path
+                          d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+                      </svg>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c"><b>Your Email</b></label>
+                        <input type="email" id="form3Example3c" value="{{user.email}}"
+                          style="color:grey; width: 60%;margin-left:10px; border:none;" name="email"
+                          placeholder="Enter your email address" class="form-control" />
+
+                      </div>
+                    </div>
+
+
+                    <!-- Textarea -->
+                    <div class="d-flex flex-row align-items-center  p-3">
+
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="margin-top: 34px;"
+                        fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                      </svg>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c"><b>Your phone number</b></label>
+                        <input type="tel" id="phone" value="{{user.phone}}"
+                          style="color:grey; width: 60%; margin-left:10px;border:none" name="phone"
+                          placeholder="Enter your phone number" class="form-control" />
+
+                      </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+
+                      <div class="col-md-4 text-center">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                      </div>
+                    </div>
+                    <br>
+
+
+                  </div>
+              </div>
+            </div>
+
+
+          </fieldset>
+        </form>
+      </section>
+
+<div class="col-md-6" style="margin-top: 90px;">
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://as2.ftcdn.net/v2/jpg/04/52/74/41/1000_F_452744171_0wHyjriyNOrZdT97y5pOEdiAit6PcVrL.jpg" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Wallet</h5>
+        <p class="card-text" style="color: grey;" name="wallet"><b>₹ {{user.wallet}}</b></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="referral mt-5" >
+          <h6><b>Referral Code</b></h6>
+          <div>
+            <input style="border-style:dashed; color:green; " type="text" value="{{user.referralCode}}" id="myInput">
+
+            <!-- The button used to copy the text -->
+            <button class="btn btn-primary btn-sm" onclick="myFunction()">Copy Code</button>
+          </div></div>
+
+        {{!-- change password --}}
+
+
+        <div class=" mt-4">
+
+          <a href="/reset/{{user._id}}"><button type="button" class="btn btn-primary" 
+              data-bs-toggle="modal" data-bs-target="#myModal">
+              Reset Password
+            </button></a>
+        </div>
+
+        {{#each user.address}}
+        <div class="d-flex flex-row align-items-center mb-4 mt-5">
+          <svg xmlns="http://www.w3.org/2000/svg" style="margin-top:23px;" width="25" height="25" fill="currentColor"
+            class="bi bi-house-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+            <path fill-rule="evenodd"
+              d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+          </svg>
+          <div class="form-outline flex-fill mb-0">
+            <label for="form-label" style="margin-left:20px ;"><b>Address</b></label>
+
+            <h6 style="margin-left:20px ; color: grey;">{{this}}</h6>
+          </div>
+
+          <a href="/remove-address/{{../user._id}}/{{this}}"  onclick="return confirm('Do you want to delete {{this}} ?')" style="color:red"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+            </svg></a>
+
+
+        </div>
+
+        {{/each}}
+        <div class="mt-4">
+          <a href="/address/{{user._id}}"><button type="submit" class="btn btn-primary btn-lg">Add New
+              Address</button></a>
+        </div>
+</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container">
+    <div class="row mt-30 mb-30">
+      <div class="col-sm-12 col-md-3">
+        <div class="share-boxes">
+          <img src="https://i.ibb.co/PtYrLNy/img1.png" alt="img1" border="0">
+          <p>Share with your friends</p>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col-sm-12 col-md-3">
+        <div class="share-boxes">
+          <img src="https://i.ibb.co/P5TdfkT/img2.png" alt="img2" border="0">
+          <p>Give her to ₹50 </p>
+          <img src="https://i.ibb.co/Sr5F70S/dotted-arrow1.png" alt="dotted-arrow1" class="dotted-line">
+          <img src="https://i.ibb.co/Fqs2KxB/dotted-arrow2.png" alt="dotted-arrow2" class="dotted-line2">
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col-sm-12 col-md-3">
+        <div class="share-boxes">
+          <img src="https://i.ibb.co/StC3RWk/img3.png" alt="img3" border="0">
+          <p>Get ₹100 for every referral</p>
+        </div>
+      </div>
+    </div>
+    <br><br>
+
+
+  </div>
+
+  </div>
+
+</body>
+
+</html>
+
+
+<script>
+  function viewImg(event) {
+    document.getElementById('imgVw').src = URL.createObjectURL(event.target.files[0])
+  }
+</script>
+
+
+
+<style>
+  html,
+  body,
+  address,
+  blockquote,
+  div,
+  dl,
+  form,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ol,
+  p,
+  pre,
+  table,
+  ul,
+  dd,
+  dt,
+  li,
+  tbody,
+  td,
+  tfoot,
+  th,
+  thead,
+  tr,
+  button,
+  del,
+  ins,
+  map,
+  object,
+  a,
+  abbr,
+  acronym,
+  b,
+  bdo,
+  big,
+  br,
+  cite,
+  code,
+  dfn,
+  em,
+  i,
+  img,
+  kbd,
+  q,
+  samp,
+  small,
+  span,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  legend,
+  fieldset,
+  p {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  a,
+  input,
+  select,
+  textarea {
+    outline: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a:hover,
+  focus {
+    text-decoration: none;
+    outline: none;
+    border: none;
+  }
+
+  img,
+  fieldset {
+    border: 0;
+  }
+
+  a {
+    outline: none;
+    border: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+    vertical-align: middle;
+    border: none;
+    outline: none;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  span,
+  p,
+  input,
+  form,
+  img,
+  hr,
+  img,
+  a {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .mt-30,
+  .mb-30 {
+    margin: 30px 0;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  .share-boxes p {
+    margin: 15px 0 0;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .share-boxes {
+    background: #f9f9f9;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 17px #ccc;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  .share-boxes img.dotted-line {
+    position: absolute;
+    left: -167px;
+    top: 5px;
+    transform: rotate(-3deg);
+  }
+
+  .share-boxes img.dotted-line2 {
+    position: absolute;
+    right: -173px;
+    top: 5px;
+    transform: rotate(-4deg);
+  }
+
+  .refer-image img {
+    width: 100%;
+  }
+
+  .refer-form ul li {
+    float: left;
+    list-style: none;
+    width: 33.333%;
+    text-align: center;
+  }
+
+  .refer-form ul li a {
+    background: #9fb0f8;
+    display: block;
+    padding: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .refer-form ul {
+    margin: 0;
+  }
+
+  .refer-form ul li.facebook-color a {
+    background: #9fb0f8
+  }
+
+  .refer-form ul li.youtube-color a {
+    background: #eb8c8c
+  }
+
+  .refer-form ul li.twitter-color a {
+    background: #9cd0fc
+  }
+
+  .refer-form ul li.facebook-color a:hover {
+    background: #4667f7;
+    text-decoration: none;
+  }
+
+  .refer-form ul li.youtube-color a:hover {
+    background: #dd2020;
+    text-decoration: none;
+  }
+
+  .refer-form ul li.twitter-color a:hover {
+    background: #40a7ff;
+    text-decoration: none;
+  }
+
+  .refer-form-content {
+    float: left;
+    width: 100%;
+    background: #f9f9f9;
+    padding: 30px;
+  }
+
+  .refer-form-content h2 {
+    color: #ffc3c9;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 25px;
+    margin: 0 0 10px;
+  }
+
+  .refer-form-content P a {
+    color: #ffc3c9;
+    font-weight: 500;
+  }
+
+  .refer-form-content input {
+    height: 50px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 1px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 6px #ccc;
+  }
+
+  .container-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .container-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #ffc3c9;
+  }
+
+  .container-checkbox:hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  .container-checkbox input:checked~.checkmark {
+    background-color: #ffc3c9;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container-checkbox input:checked~.checkmark:after {
+    display: block;
+  }
+
+  .container-checkbox .checkmark:after {
+    left: 5px;
+    top: 0px;
+    width: 7px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .refer-form-content form button {
+    background: #ffc3c9;
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  .refer-form-content form button:hover {
+    background: #000;
+  }
+
+  .refer-form-content input::placeholder {
+    color: #c5c5c5;
+    font-size: 14px;
+  }
+
+  .row.refer-form-sec {
+    height: 450px;
+    overflow: hidden;
+    margin-top: 55px;
+  }
+
+  .referal-progress table td:nth-child(2) {
+    text-align: right;
+  }
+
+  .referal-progress table td {
+    border: 1px solid #cccc;
+    padding: 15px 20px;
+  }
+
+  .row.refer-form-sec .col:first-child {
+    padding-right: 0;
+  }
+
+  .row.refer-form-sec .col:last-child {
+    padding-left: 0;
+  }
+
+  .referal-progress h2 {
+    color: #ffc3c9;
+    font-size: 22px;
+    margin: 10px 0 15px;
+  }
+
+  .share-boxes:after {
+    content: "";
+    background: url("https://i.ibb.co/WHdS3G1/circle.png") no-repeat 0 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -65px;
+    margin: 0 auto;
+    z-index: 99999;
+    height: 60px;
+    width: 20px;
+  }
+</style>
+
+
+<script>
+  function myFunction() {
+    // Get the text field
+    var copyText = document.getElementById("myInput");
+
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+
+    // Alert the copied text
+    alert("Copied the code");
+    //  alert("Copied the code: " + copyText.value);
+  }
+</script>
+
+
+
+
+<style>
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+</style>
+
+
+
+{{!--
+<script>
+
+  function removeAddress(user._id) {
+
+    $.ajax({
+      url: '/remove-address',
+      data: {
+        userId: user._id
+      },
+      method: 'post',
+      success: (response) => {
+        location.reload()
+      }
+
+    })
+
+  }
+</script> --}}

@@ -1,0 +1,704 @@
+<head>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+
+{{!--
+<section>
+    <div class="container mt-5">
+        <div class="row">
+            {{#each products}}
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{this.image}}" class="card-img-top" alt="..." style="height: 242px; width: 242px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">{{this.price}} <del> {{this.del}}</del></p>
+                        <p class="card-text">{{this.description}}</p>
+                        <a href="#" class="btn btn-primary">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            {{/each}}
+        </div>
+    </div>
+</section> --}}
+{{!-- <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.swisstimehouse.com/128939-home_default/casio-g346-ga-120-1adr-gshock-watch.webp"
+            class="card-img-top" alt="2" style="height: 242px; width: 242px;">
+        <div class="card-body">
+            <h5 class="card-title">Casio</h5>
+            <p class="card-text">₹ 10,900 <del>₹ 11,995 </del></p>
+            <a href="#" class="btn btn-danger">Buy Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.swisstimehouse.com/144438-home_default/daniel-wellington-dw00100305.webp"
+            class="card-img-top" alt="3" style="height: 242px; width: 242px;">
+        <div class="card-body">
+            <h5 class="card-title">Daniel Wellington</h5>
+            <p class="card-text">₹ 16,199 <del>₹ 18,199</del></p>
+            <a href="#" class="btn btn-danger">Buy Now</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.swisstimehouse.com/144410-medium_default/fastrack-68024ap03.webp" class="card-img-top"
+            alt="4" style="height: 242px; width: 242px;">
+        <div class="card-body">
+            <h5 class="card-title">Fastrack</h5>
+            <p class="card-text">₹ 3,995 <del>₹ 5,995</del></p>
+            <a href="#" class="btn btn-danger">Buy Now</a>
+        </div>
+    </div>
+</div> --}}
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+
+<section>
+<div class=" mt-3">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="container">
+  <div class="carousel-inner" style="border-radius: 55px 55px 55px 55px; height:550px">
+    <div class="carousel-item active">
+      <img src="https://assets.gqindia.com/photos/5cdc2da850ab3949372073f8/master/pass/jignesh-jhaveri-watch-report.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/digital-watches-men-1558132883.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1604242692760-2f7b0c26856d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0Y2hlc3xlbnwwfHwwfHw%3D&w=1000&q=80" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://weartotrack.com/wp-content/uploads/2020/06/Smartwatch-for-Nurses-doctors.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</div>
+</section>
+
+{{!-- 
+<div class="wrapper">
+    <div class="container">
+        <div class="row g-1">
+
+            {{#each products}}
+            <div class="col-lg-3 col-md-4">
+                <div class="card p-3">
+                    <div class="text-center">
+                      <a href="/singleproduct/{{this._id}}"><img  src="/product-images/{{this._id}}.jpg "></a>
+                    </div>
+                    <div class="product-details">      
+                        <span>{{this.product_name}}</span>  
+                               <p>{{this.offer_price}} <del> {{this.price}}</del></p>
+                               <p style="color: green;">{{this.percentage_discount}}% off</p>
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                           </svg> 
+                           </div> 
+                           <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart</button>
+                        </div>                 
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>--}}
+<br><br>
+<section id="gallery">
+  <div class="container">
+    <div class="row">
+    
+{{#each products}}
+
+<h1  class="text-center text-uppercase" style="font-family: 'Times New Roman', serif;">{{this._id}} watch collections</h1><br><br><br><br>
+
+{{#each digital}}
+
+<div class="col-lg-4 mb-4">
+    <div class="card">
+ <a href="/singleproduct/{{this._id}}"><img  src="/product-images/{{this._id}}.jpg" class="card-img-top"></a>
+
+      <div class="card-body">
+         <span>{{this.product_name}}</span>
+         
+
+                 <p>₹ {{this.newOffer}} <del> ₹ {{this.offer_price}} </del></p>
+                 <p style="color: green;">{{this.discount}}% off</p>
+
+       <div>
+
+        <!-- Default checked -->
+
+       {{!-- <a href="/add-to-cart/{{this._id}}" class="btn btn-outline-warning btn-sm">Add To Cart</a> --}}
+
+
+{{!--  
+  {{#if this.whislist}}
+<a href="/removeWishlistItem/{{this._id}}" class="btn btn-outline-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg></a>
+{{else}}
+<a href="/add-to-wishlist/{{this._id}}" onclick=" return confirm('Successfully added to whishlist?')" class="btn btn-outline-danger btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+</svg></a>
+  {{/if}} --}}
+
+{{!-- <div class="var2"> --}}
+ 
+    <a href="/add-to-wishlist/{{this._id}}" class="button one inactive mobile button--secondary">
+
+    <div class="btn__effect">
+    
+    <svg class="heart-stroke icon-svg icon-svg--size-4 icon-svg--color-silver" viewBox="20 18 29 28" aria-hidden="true" focusable="false"><path d="M28.3 21.1a4.3 4.3 0 0 1 4.1 2.6 2.5 2.5 0 0 0 2.3 1.7c1 0 1.7-.6 2.2-1.7a3.7 3.7 0 0 1 3.7-2.6c2.7 0 5.2 2.7 5.3 5.8.2 4-5.4 11.2-9.3 15a2.8 2.8 0 0 1-2 1 3.4 3.4 0 0 1-2.2-1c-9.6-10-9.4-13.2-9.3-15 0-1 .6-5.8 5.2-5.8m0-3c-5.3 0-7.9 4.3-8.2 8.5-.2 3.2.4 7.2 10.2 17.4a6.3 6.3 0 0 0 4.3 1.9 5.7 5.7 0 0 0 4.1-1.9c1.1-1 10.6-10.7 10.3-17.3-.2-4.6-4-8.6-8.4-8.6a7.6 7.6 0 0 0-6 2.7 8.1 8.1 0 0 0-6.2-2.7z"></path></svg>
+    <svg class="heart-full icon-svg icon-svg--size-4 icon-svg--color-blue" viewBox="0 0 19.2 18.5" aria-hidden="true" focusable="false"><path d="M9.66 18.48a4.23 4.23 0 0 1-2.89-1.22C.29 10.44-.12 7.79.02 5.67.21 2.87 1.95.03 5.42.01c1.61-.07 3.16.57 4.25 1.76A5.07 5.07 0 0 1 13.6 0c2.88 0 5.43 2.66 5.59 5.74.2 4.37-6.09 10.79-6.8 11.5-.71.77-1.7 1.21-2.74 1.23z"></path></svg>
+    
+
+    <svg class="broken-heart" xmlns="http://www.w3.org/2000/svg" width="48" height="16" viewBox="5.707 17 48 16"><g fill="#0090E3">
+  
+  <path class="broken-heart--left" d="M29.865 32.735V18.703a4.562 4.562 0 0 0-3.567-1.476c-2.916.017-4.378 2.403-4.538 4.756-.118 1.781.227 4.006 5.672 9.737a3.544 3.544 0 0 0 2.428 1.025l-.008-.008.013-.002z"/>
+  <path class="broken-heart--right" d="M37.868 22.045c-.135-2.588-2.277-4.823-4.697-4.823a4.258 4.258 0 0 0-3.302 1.487l-.004-.003v14.035a3.215 3.215 0 0 0 2.289-1.033c.598-.596 5.882-5.99 5.714-9.663z"/></g>
+  <path class="broken-heart--crack" fill="none" stroke="#FFF" stroke-miterlimit="10" d="M29.865 18.205v14.573"/></svg>
+     
+      <div class="effect-group">
+        <span class="effect"></span>
+        <span class="effect"></span>
+        <span class="effect"></span>
+        <span class="effect"></span>
+        <span class="effect"></span>
+      </div>
+    </div>
+</a> 
+  {{!-- </div> --}}
+
+
+
+      {{!-- <a onclick="return toastr.success('Hi! I am success message.');"> --}}
+      <a onclick="clickMe()">
+      <button class="btn btn-outline-warning btn-sm" onclick="addToCart('{{this._id}}')">Add To Cart</button>
+      </a>
+
+      {{!-- <div id="myAlert" class="alert alert-success collapse">
+        <a id="linkClose" href="#" class="close">&times;</a>
+      Successfully Added To Cart
+      </div> --}}
+
+
+      {{!-- </a>  --}}
+    
+       <a href="#" class="btn btn-outline-success btn-sm">Buy Now</a>
+    
+       </div>
+      </div>
+     </div>
+    </div>
+{{/each}}
+{{/each}}
+
+
+
+  </div>
+</div>
+</section>
+
+
+{{!-- 
+<br><br>
+ <section id="header" class="jumbotron text-center">
+     <h1 class="display-3">{{this.category}} watch collections</h1>
+    
+</section>
+  
+<br> 
+
+<section id="gallery">
+  <div class="container">
+    <div class="row">
+      {{#each products}}
+      {{#each digital}}
+    <div class="col-lg-4 mb-4">
+    <div class="card">
+ <a href="/singleproduct/{{this._id}}"><img  src="/product-images/{{this._id}}.jpg" class="card-img-top"></a>
+
+      <div class="card-body">
+         <span>{{this.product_name}}</span>  
+         
+
+                               <p> ₹ {{this.offer_price}} <del> {{this.price}}</del></p>
+                               <p style="color: green;">{{this.percentage_discount}}% off</p>
+       <div>
+       <button class="btn btn-outline-warning btn-sm" onclick="addToCart('{{this._id}}')">Add To Cart</button>
+       <a href="" class="btn btn-outline-success btn-sm">Buy Now</a>
+       </div>
+      </div>
+     </div>
+    </div>
+    {{/each}}
+    {{/each}}
+  </div>
+</div>
+</section> --}}
+
+
+{{!-- 
+<br><br>
+ <section id="header" class="jumbotron text-center">
+     <h1 class="display-3">Digital Watch Collections</h1>
+    
+</section>
+  
+<br> 
+
+<section id="gallery">
+  <div class="container">
+    <div class="row">
+      {{#each products}}
+      {{#if product.category}}
+    <div class="col-lg-4 mb-4">
+    <div class="card">
+ <a href="/singleproduct/{{this._id}}"><img  src="/product-images/{{this._id}}.jpg" class="card-img-top"></a>
+
+      <div class="card-body">
+         <span>{{this.product_name}}</span>  
+                               <p>{{this.offer_price}} <del> {{this.price}}</del></p>
+                               <p style="color: green;">{{this.percentage_discount}}% off</p>
+       <a href="" class="btn btn-outline-success btn-sm">Add To Cart</a>
+      </div>
+     </div>
+    </div>
+    {{/if}}
+    {{/each}}
+  </div>
+</div>
+</section> --}}
+
+
+
+
+<br><br>
+ <section id="header" class="jumbotron text-center">
+     <h1 class="display-3">Now Trending</h1>    
+</section>
+  
+<br>
+
+<section id="gallery">
+  <div class="container">
+    <div class="row">
+    <div class="col-lg-4 mb-4">
+    <div class="card">
+      <img src="https://assets.tatacliq.com/medias/sys_master/images/32456286011422.jpg" alt="" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Japanese Quartz</h5>
+        <p class="card-text">Quartz movements that began with Japanese watchmakers in 1969</p>
+        <p>₹54,500</p>
+       <a href="" class="btn btn-outline-success btn-sm">Add To Cart</a>
+        {{!-- <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a> --}}
+      </div>
+     </div>
+    </div>
+  <div class="col-lg-4 mb-4">
+  <div class="card">
+      <img src="https://assets.tatacliq.com/medias/sys_master/images/32456285814814.jpg" alt="" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Chronographs</h5>
+        <p class="card-text">Blending the precision of a stop watch with the finesse of a display watch</p>
+        <p>₹46,500</p>
+       <a href="" class="btn btn-outline-success btn-sm">Add To Cart</a>
+        {{!-- <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a> --}}
+      </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+    <div class="card">
+      <img src="https://assets.tatacliq.com/medias/sys_master/images/32456286142494.jpg" alt="" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Embellished</h5>
+        <p class="card-text">Extraordinary conversation starters, these make for statement additions</p>
+        <p>₹24,500</p>
+       <a href="" class="btn btn-outline-success btn-sm">Add To Cart</a>
+        {{!-- <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a> --}}
+      </div>
+     </div>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+
+
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+ :before, :after {
+	 box-sizing: border-box;
+}
+ body {
+	 font-family: "Open Sans", sans-serif;
+	 font-size: 13px;
+}
+ .button--secondary, .button--secondary:visited {
+	 border-radius: 3px;
+	 cursor: pointer;
+	 display: inline-block;
+	 min-width: 64px;
+	 font-family: inherit;
+	 font-size: inherit;
+	 line-height: 15px;
+	 outline: none;
+	 text-align: center;
+	 text-decoration: none;
+	 text-shadow: none;
+	 transition: background 0.1s linear;
+	 font-weight: 400;
+	 color: #0090e3;
+	 background: #fff;
+	 border: 1px solid red;
+	 box-shadow: none;
+	 padding: 6px 15px;
+	 transition-property: border;
+	 transition-timing-function: ease-in-out;
+	 transition-duration: 0.15s;
+}
+ .button--full-width {
+	 min-width: 385px;
+     border: none;
+}
+ .icon-with-text {
+	 display: inline-flex;
+	 align-items: flex-start;
+}
+ .icon-with-text__icon {
+	 flex-shrink: 0;
+	 margin-right: 8px;
+	 margin-top: -2px;
+}
+ .icon-svg--color-silver {
+	 fill: #ccc;
+	 color: #ccc;
+}
+ .icon-svg--color-blue {
+	 fill: #0090e3;
+	 color: #0090e3;
+}
+ .icon-svg {
+	 display: inline-block;
+	 vertical-align: middle;
+	 height: 16px;
+	 width: 16px;
+}
+ .heart-full {
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 opacity: 0;
+}
+ .btn__effect {
+	 display: inline-block;
+	 position: relative;
+}
+ .effect-group {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 transform: rotate(25deg);
+}
+ .effect-group .effect {
+	 display: block;
+	 position: absolute;
+	 top: 38%;
+	 left: 50%;
+	 width: 20px;
+	 transform-origin: 0px 2px;
+}
+ .effect-group .effect:nth-child(2) {
+	 transform: rotate(72deg);
+}
+ .effect-group .effect:nth-child(3) {
+	 transform: rotate(144deg);
+}
+ .effect-group .effect:nth-child(4) {
+	 transform: rotate(216deg);
+}
+ .effect-group .effect:nth-child(5) {
+	 transform: rotate(288deg);
+}
+ .effect-group .effect:before {
+	 content: "";
+	 display: block;
+	 position: absolute;
+	 right: 0;
+	 border-radius: 1.5px;
+	 height: 3px;
+	 background: #0090e3;
+}
+ .effect-group .effect:after {
+	 content: "";
+	 display: block;
+	 position: absolute;
+	 top: 10px;
+	 right: 10%;
+	 border-radius: 50%;
+	 width: 3px;
+	 height: 3px;
+	 background: #f60;
+	 transform: scale(0, 0);
+}
+ .active .heart-stroke {
+	 opacity: 0;
+}
+ .active .heart-full {
+	 opacity: 1;
+}
+ .active .icon-svg {
+	 animation: bounceIn 0.5s linear;
+}
+ .active .effect:before {
+	 animation: fireworkLine 0.5s linear 0.1s;
+}
+ .active .effect:after {
+	 animation: fireworkPoint 0.5s linear 0.1s;
+}
+ .broken-heart {
+	 position: absolute;
+	 left: -16px;
+	 top: 0;
+	 opacity: 0;
+}
+ .broken-heart--left {
+	 transform: rotate(0deg);
+	 transform-origin: 60% 200%;
+}
+ .broken-heart--right {
+	 transform: rotate(0deg);
+	 transform-origin: 63% 200%;
+}
+ .broken-heart--crack {
+	 stroke-dasharray: 15;
+	 stroke-dashoffset: 15;
+}
+ .deactivate .broken-heart {
+	 opacity: 1;
+}
+ .deactivate .broken-heart--left {
+	 animation: crackLeft 0.35s cubic-bezier(0.68, -0.55, 0.265, 2.85) 0.15s forwards, hide 0.25s ease-in 0.55s forwards;
+}
+ .deactivate .broken-heart--right {
+	 animation: crackRight 0.35s cubic-bezier(0.68, -0.55, 0.265, 2.85) 0.15s forwards, hide 0.25s ease-in 0.55s forwards;
+}
+ .deactivate .broken-heart--crack {
+	 animation: crack 0.2s ease-in forwards;
+}
+ .button.one.desktop:not(.active):hover .heart-stroke {
+	 animation: pulse 1s ease-out infinite;
+}
+ .button.two.desktop:not(.active):hover .heart-stroke {
+	 animation: pulseBlue 1s ease-out infinite;
+}
+ @keyframes pulse {
+	 0% {
+		 opacity: 1;
+		 transform-origin: center center;
+		 transform: scale(1);
+	}
+	 50% {
+		 opacity: 0.6;
+		 transform: scale(1.15);
+	}
+	 100% {
+		 opacity: 1;
+		 transform: scale(1);
+	}
+}
+ @keyframes pulseBlue {
+	 0% {
+		 transform-origin: center center;
+		 transform: scale(1);
+		 fill: #ccc;
+	}
+	 50% {
+		 transform: scale(1.15);
+		 fill: #0090e3;
+	}
+	 100% {
+		 transform: scale(1);
+		 fill: #ccc;
+	}
+}
+ @keyframes fireworkLine {
+	 0% {
+		 right: 20%;
+		 transform: scale(0, 0);
+	}
+	 25% {
+		 right: 20%;
+		 width: 6px;
+		 transform: scale(1, 1);
+	}
+	 35% {
+		 right: 0;
+		 width: 35%;
+	}
+	 70% {
+		 right: 0;
+		 width: 4px;
+		 transform: scale(1, 1);
+	}
+	 100% {
+		 right: 0;
+		 transform: scale(0, 0);
+	}
+}
+ @keyframes fireworkPoint {
+	 30% {
+		 transform: scale(0, 0);
+	}
+	 60% {
+		 transform: scale(1, 1);
+	}
+	 100% {
+		 transform: scale(0, 0);
+	}
+}
+ @keyframes bounceIn {
+	 0% {
+		 transform: scale(0);
+	}
+	 30% {
+		 transform: scale(1.25);
+	}
+	 50% {
+		 transform: scale(0.9);
+	}
+	 70% {
+		 transform: scale(1.1);
+	}
+	 80% {
+		 transform: scale(1);
+	}
+}
+ @keyframes crackLeft {
+	 0% {
+		 transform: rotate(0deg);
+	}
+	 100% {
+		 transform: rotate(-45deg);
+	}
+}
+ @keyframes crackRight {
+	 0% {
+		 transform: rotate(0deg);
+	}
+	 100% {
+		 transform: rotate(45deg);
+	}
+}
+ @keyframes crack {
+	 0% {
+		 stroke-dasharray: 15;
+		 stroke-dashoffset: 15;
+	}
+	 80% {
+		 stroke-dasharray: 15;
+		 stroke-dashoffset: 0;
+		 opacity: 1;
+	}
+	 100% {
+		 opacity: 0;
+	}
+}
+ @keyframes hide {
+	 0% {
+		 opacity: 1;
+	}
+	 100% {
+		 opacity: 0;
+	}
+}
+ 
+</style>
+
+
+<script>
+    // hover:
+// grey and grey
+// grey and blue
+
+// active: 
+// bounce w/ fireworks
+
+// deactivate: 
+// cracking + fall apart heart
+
+$(".button").click(function() {
+  if ( $(this).hasClass( "deactivate" ) ) {
+    $(this).removeClass("deactivate")
+  }
+  if ( $(this).hasClass( "active" ) ) {
+    $(this).addClass("deactivate")
+  }
+  $(this).toggleClass("animate");
+  $(this).toggleClass("active");
+  $(this).toggleClass("inactive");
+});         
+</script>
+ 
+
+
+
+{{!-- <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+
+        const cartButtons = document.querySelectorAll('.cart-button');
+
+        cartButtons.forEach(button => {
+
+            button.addEventListener('click', cartClick);
+
+        });
+
+        function cartClick() {
+            let button = this;
+            button.classList.add('clicked');
+        }
+
+
+
+    });
+</script> --}}
+
+
+<script type="text/javascript">
+function clickMe(){
+  swal("Successfully added to cart")
+}
+
+</script>

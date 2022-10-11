@@ -1,0 +1,61 @@
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+ <div class="col-md-12  mt-4" style="text-align: end;">
+<a href ="/admin/view-category" class="btn btn-success ">Go Back</a>
+</div>
+</div>
+
+
+<!-- Include the above in your HEAD tag -->
+<div class="container">
+<section>  
+<form class="form-horizontal" action="/admin/add-category" enctype="multipart/form-data" method="post">
+<fieldset>
+
+<!-- Form Name -->
+<legend>ADD CATEGORY</legend>
+<hr>
+
+        {{#if signupErr}}
+        <p class="alert alert-danger">{{signupErr}}</p>
+        {{/if}}
+                  
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">ADD CATEGORY</label>
+  
+ <div class="col-md-4">
+  <input id="category" name="category" placeholder="Category name" class="form-control input-md" required="" type="text">  
+  </div>
+  
+ 
+</div>
+
+<br>
+
+<div class="form-group">
+ <div class="col-md-4">
+  <input id="discount" name="discount" placeholder="Discount Percentage" class="form-control input-md" required="" type="number">  
+  </div> 
+</div>
+
+
+<!-- Button -->
+<div class="form-group">
+
+  <div class="col-md-4">
+    <button  class="btn btn-primary">Add</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>
+</section>
+</div>
+    </body>
+</html>

@@ -1,0 +1,103 @@
+<html>
+
+<head>
+
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-md-12  mt-4" style="text-align: end;">
+      <a href="/admin/coupons" class="btn btn-success ">Go Back</a>
+    </div>
+  </div>
+
+
+  <!-- Include the above in your HEAD tag -->
+  <div class="container">
+    <section>
+      <form class="form-horizontal" action="/admin/add-coupons" method="post">
+        <fieldset>
+ 
+          <!-- Form Name -->
+          <legend>ADD COUPONS</legend>
+          <hr>
+          {{#if err}}
+          <p class="text-danger">{{err}}</p>
+          {{/if}}
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="coupon">COUPON</label>
+            <div class="col-md-4">
+              <input id="coupon" name="coupon" placeholder="coupon" class="form-control input-md"
+                required="" type="text">
+            </div>
+          </div>
+          <br>
+
+   
+        
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="discount_price">DISCOUNT PRICE</label>
+            <div class="col-md-4">
+              <input id="discount_price" name="discount_price" placeholder="Discount Price" class="form-control input-md"
+                required="" type="number">
+
+            </div>
+          </div>
+          <br>
+
+          <!-- Text input-->
+                <div class="form-group">
+            <label class="col-md-4 control-label" for="price">STARTING DATE</label>
+            <div class="col-md-4">
+              <input id="starting_date" name="starting_date" placeholder="" class="form-control input-md" required="" type="date">
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="price">EXPIRY DATE</label>
+            <div class="col-md-4">
+              <input id="expiry_date" name="expiry_date" placeholder="" class="form-control input-md" required="" type="date">
+            </div>
+          </div>
+          <br>
+
+          <!-- Text input-->
+          {{!-- <div class="form-group">
+            <label class="col-md-4 control-label" for="percentage_discount">PERCENTAGE DISCOUNT</label>
+            <div class="col-md-4">
+              <input id="percentage_discount" name="percentage_discount" placeholder="Percentage Discount"
+                class="form-control input-md" required="" type="number">
+
+            </div>
+          </div>
+          <br> --}}
+
+          <!-- File Button -->
+          {{!-- <div class="form-group">
+            <label class="col-md-4 control-label" for="image">Upload Image</label>
+            <div class="col-md-4">
+              <input id="image" name="image" required="" class="input-file" type="file">
+            </div>
+          </div>
+          <br> --}}
+
+
+             
+          <!-- Button -->
+          <div class="form-group">
+
+            <div class="col-md-4">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+          </div>
+
+        </fieldset>
+      </form>
+    </section>
+  </div>
+</body>
+</html>
+

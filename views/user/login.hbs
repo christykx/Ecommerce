@@ -1,0 +1,83 @@
+<section class="vh-100" style="background-color: #a9e2e9;">
+  <div class="container p-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem; ">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img
+                src="https://bollyy.com/wp-content/uploads/2021/09/Taapsee-Pannu-wearing-Noises-smartwatch_Pic-1.jpg"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;height: 536px;width: 385px; object-fit:cover;"/>
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form action="/login" id="frm" method="post">
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+
+                    <span class="h1 fw-bold mb-0">Login</span>
+                  </div>
+
+                  {{!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5> --}}
+
+                  <div class="form-outline mb-4">
+                       <label class="form-label" for="form2Example17">Email address</label>
+                    <input type="email" name="email" id="form2Example17" class="form-control form-control-lg" />
+                 
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <label class="form-label" for="form2Example27">Password</label>
+                    <input type="password" name="password"  id="form2Example27" class="form-control form-control-lg" />
+                    
+                  </div>
+                  
+                  {{#if loginerr}}
+                  <p style="color: red;">Invalid user</p>
+                  {{/if}}
+                  
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                  </div>
+                  <br>
+                      <span>Or login with</span>
+                  {{!-- <div class="mb-4">                --}}
+                 <a href="/otplogin"  class="btn btn-primary" >OTP Login</a>
+                  {{!-- </div> --}}
+
+                  <p class="mb-5 pb-lg-2" style="color: #000000;">Doesn't have an account? <a href="/signup"
+                      style="color: #393f81;">Register here</a></p>
+                  {{!-- <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a> --}}
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+jQuery('#frm').validate({
+rules:{
+    email:"required",
+    password:"required"
+},messages:{
+    email:"please enter your email",
+    password:"please enter your password"
+},  
+submitHandler:function(form){
+    form.submit();
+}
+
+});
+</script>

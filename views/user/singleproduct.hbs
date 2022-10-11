@@ -1,0 +1,102 @@
+
+<div class="container mt-5 mb-5">
+<div class="row d-flex justify-content-center">
+<div class="col-md-10">
+<div class="card">
+<div class="row">
+<div class="col-md-6">
+<div class="images p-3">
+
+<div >
+<img  src="/product-images/{{product._id}}.jpg" id="zoom" width="450" height="450"/> 
+</div>
+{{!-- <div class="thumbnail text-center"> <img onclick="change_image(this)" src="https://i.imgur.com/Rx7uKd0.jpg" width="70"> <img onclick="change_image(this)" src="https://i.imgur.com/Dhebu4F.jpg" width="70"> </div> --}}
+
+</div>
+</div>
+<div class="col-md-6">
+<div class="product p-4">
+<div class="d-flex justify-content-between align-items-center">
+{{!-- <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span> </div> <i class="fa fa-shopping-cart text-muted"></i> --}}
+</div>
+<div class="mt-4 mb-3"> 
+<h5 class="text-uppercase">{{product.product_name}}</h5>
+<h6 class="text-uppercase">About Product</h6>
+<span class="text-muted brand">{{product.product_description}}</span>
+<div class="price d-flex flex-row align-items-center"> 
+<div class="ml-2"> <small class="dis-price">{{product.price}}  </small> <span>₹{{product.offer_price}}</span> <span>{{product.discount}}% off</span> </div>
+</div>
+<p class="about"{{product.product_description}}</p>
+</div>
+
+{{!-- <div class="sizes mt-5">
+<h6 class="text-uppercase">Size</h6> <label class="radio"> <input type="radio" name="size" value="S" checked> <span>S</span> </label> <label class="radio"> <input type="radio" name="size" value="M"> <span>M</span> </label> <label class="radio"> <input type="radio" name="size" value="L"> <span>L</span> </label> <label class="radio"> <input type="radio" name="size" value="XL"> <span>XL</span> </label> <label class="radio"> <input type="radio" name="size" value="XXL"> <span>XXL</span> </label>
+</div> --}}
+{{!-- <div class="cart mt-4 align-items-center"> 
+    <button class="btn btn-danger text-uppercase">Add to cart</button>
+</div> --}}
+    <div class="d-grid gap-2 mt-4">
+       <button class="btn btn-outline-warning btn-sm" onclick="addToCart('{{this.product._id}}')">Add To Cart</button>
+     <button class="btn btn-success" type="submit">BUY NOW</button>
+
+    </div>
+    
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{{!-- <img  src="/product-images/{{product._id}}.jpg" id="zoom" width="250" height="250"/>  --}}
+
+</div> 
+
+
+
+{{!-- <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/product-images/{{product._id}}.jpg" id="zoom" class="img-fluid rounded-start" alt="watch">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title text-uppercase">{{product.product_name}}</h5>
+      <h6 class="text-uppercase">About Product</h6>
+        <p class="card-text">{{product.product_description}}</p>
+        <div > <small class="dis-price">{{product.price}}  </small> <span>₹{{product.offer_price}}</span> <span>{{product.percentage_discount}}% off</span> </div>
+      </div>
+    <div class="d-grid gap-2 mt-4">
+     <button class="btn btn-danger" type="submit">ADD TO CART</button>
+     <button class="btn btn-success" type="submit">BUY NOW</button>
+    </div>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+
+
+{{!-- 
+<script>
+    function change_image(image){
+var container = document.getElementById("main-image");
+container.src = image.src;
+}
+document.addEventListener("DOMContentLoaded", function(event) {
+});
+</script> --}}
+
+{{!-- <script src="jquery.js"></script> --}}
+<script src="/javascripts/zoomsl.min.js"></script>
+
+
+<script>
+$(document).ready(function(){
+   
+$('#zoom').imagezoomsl({
+    zoomrange:[4,4]
+});
+
+});
+</script>
+

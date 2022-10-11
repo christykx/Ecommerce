@@ -1,0 +1,19 @@
+<div class="container mt-5" style=" width: 100%;  ">
+   
+	<div class="row" style="background-image: url(https://www.simplexkc.com/wp-content/uploads/2022/03/146-1466755_nearby-transparent-background-address-icon-hd-png-download.jpg); background-repeat:no-repeat; background-position:250px;">
+		<div class="col-sm-4" style=" margin-left:600px ; margin-top:70px; padding-top: 100px;">
+		 <form action="/update-address/{{user._id}}" method="post" id="frm">
+
+		      <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" name="address" class="form-control" value="{{user.address}}" id="inputAddress" placeholder="1234 Main St">
+  </div>
+              <div class="col-md-4 mt-3">
+              <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+
+		</form>
+       
+        </div>
+	</div>
+</div>

@@ -1,0 +1,151 @@
+<section class="h-100" style="background-color: #a9e2e9;">
+  <div class="container h-100 p-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register Here</p>
+ 
+                  {{#if signupErr}}
+                  <p class="alert alert-danger">{{signupErr}}</p> 
+                  {{/if}}
+                <form class="mx-1 mx-md-4" action="/signup" id="frm" method="post">
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                     <svg xmlns="http://www.w3.org/2000/svg"  style="margin-top: 38px;" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+                    <div class="form-outline flex-fill mb-0">
+                         <label class="form-label" for="form3Example1c">Your Name</label>
+                      <input type="text" name="username" placeholder="Enter your name" id="form3Example1c" class="form-control" />
+                     
+                    </div>
+                  </div>
+
+ <div class="d-flex flex-row align-items-center mb-4">
+                    
+ <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 38px;" width="30" height="30" fill="currentColor" class="bi bi-gift-fill" viewBox="0 0 16 16">
+  <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7h6zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9H2.5z"/>
+</svg>
+                    <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example3c">Referral Code(Optional)</label>
+                      <input type="text" id="form3Example3c"  name="referrals" placeholder="Enter your referral code" class="form-control"/>                    
+                    </div>
+                  </div>
+
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    
+  <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 38px;" width="25" height="25" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+</svg>
+                    <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example3c">Your Email</label>
+                      <input type="email" id="form3Example3c"  name="email" placeholder="Enter your email address" class="form-control" />
+                    
+                    </div>
+                  </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                    
+ <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+</svg>
+                    <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example3c">Your phone number</label>
+                      <input type="tel" id="phone"  name="phone" placeholder="Enter your phone number" class="form-control" />
+                    
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                     <svg xmlns="http://www.w3.org/2000/svg"  style="margin-top: 38px;" width="30" height="30" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+</svg>
+
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4c">Password</label>
+                       <input type="password" id="password"  name="password" placeholder="Enter your password" class="form-control" />
+                      
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                     <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 38px;" width="30" height="30" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+  <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg>
+                    <div class="form-outline flex-fill mb-2">
+                           <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                          
+                      <input type="password" id="cpassword" name="cpassword" placeholder="Confirm your password" class="form-control" />
+                
+                    </div>
+                  </div>
+               
+                
+
+                  <div class="form-check d-flex justify-content-center mb-3">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                    <label class="form-check-label" for="form2Example3">
+                      I agree all statements in <a href="#!">Terms of service</a>
+                    </label>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                  </div>
+
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+jQuery('#frm').validate({
+rules:{
+    username:{
+      required:true,
+      normalizer:function(value){
+        return $.trim(value);
+      }
+    },
+    email:"required",
+    phone:"required",
+    password:{     
+      minlength:5      
+      },
+    cpassword:{
+      minlength:5,
+      equalTo:"#password"
+    }
+},messages:{
+    username:"please enter your username",
+    email:"please enter your email",
+    phone:"please enter your phone number",
+    password:"please enter your password",
+    cpassword:"please repeat your password",
+
+},  
+submitHandler:function(form){
+    form.submit();
+}
+
+});
+</script>

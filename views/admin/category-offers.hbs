@@ -1,0 +1,73 @@
+<head>
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+</head>
+
+
+
+<section> 
+    {{!-- style="background-image:url(https://thumbs.dreamstime.com/b/blue-green-yellow-gradient-background-watercolor-texture-abstract-artistic-grungy-web-design-backdrop-brochure-165710792.jpg); background-repeat: no-repeat; background-size: cover;"> --}}
+<div class="container">
+    <div class="col-md-12 text-right mt-4 "> 
+ <table id="table_id" class="table mt-5 " >
+  <thead style="color:black">
+    <tr>
+       <th scope="col">S.No.</th> 
+      <th scope="col">User Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+   {{#each users}} 
+    <tr>
+       <td class="sno">1</td> 
+      <td>{{this.username}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.phone}}</td>
+
+      {{!-- <td><a href="/admin/edit-user/{{this._id}}" class="btn btn-primary">Edit</a> --}}
+    <td>
+      <div class="d-flex justify-content-evenly">
+      <div><a href="/admin/delete-user/{{this._id}}"class="btn btn-danger" onclick="return confirm('Do you want to delete {{this.username}} ?')">Delete</a></div>
+
+      {{#if this.block}}
+      <div><a class="btn btn-success text-white p-2" href="/admin/user-unblock/{{this._id}}">Unblock</a></div>
+       {{else}}    
+      <div><a class="btn btn-danger" href="/admin/user-block/{{this._id}}">Block</a></div>
+      {{/if}}
+
+      </div>
+      </td>
+    </tr>   
+   {{/each}}
+   </tbody>
+   </table>
+   </div>
+ </div>
+</section> 
+
+
+
+
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+></script>
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script>
+$(function() {
+$("#table_id").dataTable({
+  "fnRowCallback":function(nRow,aData,iDisplayIndex,iDisplayIndexFull){
+    $('td:eq(0)',nRow).html(iDisplayIndexFull+1);
+      
+ }
+})
+}) 
+ 
+</script>
+
