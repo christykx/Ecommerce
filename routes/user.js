@@ -117,16 +117,18 @@ router.post('/signup', function(req, res, next) {
   userHelpers.doSignup(req.body).then((response)=>{  
       req.session.loggedIn=true
       req.session.user=response
-      console.log("response.userdata","........")
+      res.redirect('/')
+      // console.log("response.userdata","........")
 
       // if(req.body.referral==req.body.referralCode){
       //   req.body.wallet=req.body.wallet+50;
       // }
-      res.redirect('/')
+      // res.redirect('/')
   }).catch((err)=>{
     req.session.signupErr=err
     res.redirect('/signup')
   })
+ 
   // res.render('user/signup', {admin:false});
 });
 
