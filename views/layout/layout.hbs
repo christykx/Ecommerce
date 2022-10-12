@@ -27,8 +27,9 @@
     {{else}}
     {{>user-header}}
     {{/if}}
+    <div style="display:none;" id="myDiv" class="animate-bottom">
     {{{body}}} 
-
+    </div>
 <div id="load" class="loader"></div>
 
 <script>
@@ -112,6 +113,5 @@ function showPage() {
 
 #myDiv {
   display: none;
-  text-align: center;
 }
 </style>
