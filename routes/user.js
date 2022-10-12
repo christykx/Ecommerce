@@ -118,15 +118,15 @@ router.post('/signup', function(req, res, next) {
       req.session.loggedIn=true
       req.session.user=response
       // console.log("response.userdata","........")
-      // res.redirect('/')
+      res.redirect('/')
       
 
-  }).catch((err)=>{
-    req.session.signupErr=err
-    res.redirect('/signup')
   })
-  res.render('user/login', {admin:false,"loginerr":req.session.loginerr});
-  req.session.loginerr=false
+  // .catch((err)=>{
+  //   req.session.signupErr=err
+  //   res.redirect('/signup')
+  // })
+  
   // res.render('user/signup', {admin:false});
 });
 
