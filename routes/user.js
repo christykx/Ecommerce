@@ -121,11 +121,10 @@ router.post('/signup', function(req, res, next) {
       res.redirect('/')
       
 
+  }).catch((err)=>{
+    req.session.signupErr=err
+    res.redirect('/signup')
   })
-  // .catch((err)=>{
-  //   req.session.signupErr=err
-  //   res.redirect('/signup')
-  // })
   
   // res.render('user/signup', {admin:false});
 });

@@ -1,3 +1,7 @@
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
 <section class="h-100" style="background-color: #a9e2e9;">
   <div class="container h-100 p-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -95,7 +99,7 @@
                   </div>
 
                   <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg"  onclick="clickMe()">Register</button>
                   </div>
 
                 </form>
@@ -140,7 +144,7 @@ rules:{
     email:"please enter your email",
     phone:"please enter your phone number",
     password:"please enter your password",
-    cpassword:"please repeat your password",
+    cpassword:"please repeat your password"
 
 },  
 submitHandler:function(form){
@@ -148,4 +152,15 @@ submitHandler:function(form){
 }
 
 });
+</script>
+
+
+<script type="text/javascript">
+function clickMe(){
+swal({
+  title: "Good job!",
+  text: "You clicked the button!",
+  icon: "success",
+});  
+}
 </script>
